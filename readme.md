@@ -33,3 +33,40 @@ The Lambda function runs **daily** using an **EventBridge scheduler** and copies
 3. Zip the Lambda code:
    ```bash
    Compress-Archive -Path lambda_function.py -DestinationPath lambda_function.zip
+
+## Run Terraform:
+
+terraform init
+terraform plan
+terraform apply
+
+## 🧪 Testing
+
+Manual Test: Trigger the Lambda function in AWS console to immediately copy files
+
+Scheduled Test: Wait for EventBridge to run daily
+
+## 📁 Folder Structure
+uptime-monitor-pro/
+├── lambda_function.py
+├── lambda_function.zip
+├── main.tf
+├── providers.tf
+├── README.md
+└── .gitignore
+
+## 💡 Notes
+
+Buckets have versioning enabled and public access blocked
+
+Lambda runs with least privilege IAM role
+
+Future improvements:
+
+CloudWatch alerts on failure
+
+CI/CD integration for automatic deployments
+
+## dummy triggers
+
+echo "dummy trigger to push"
